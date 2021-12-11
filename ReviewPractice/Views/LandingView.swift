@@ -12,7 +12,12 @@ struct LandingView: View {
         VStack {
             List {
               Text("Chapter 2: The Chemical Context of Life")
+              Text("Chapter 3 : Water and the Fitness of the Environment")
+              Text("Chapter 4 : Carbon and the Molecular Diversity of Life")
+              Text("Chapter 5 : The Structure and Function of Large Biological Molecules")
+
             }
+            .listStyle(.grouped)
         }
         .navigationTitle("Pre AP Bio Review")
     }
@@ -20,6 +25,8 @@ struct LandingView: View {
 
 struct LandingView_Previews: PreviewProvider {
     static var previews: some View {
-        LandingView()
+        NavigationView {
+            LandingView()
+        }
     }
 }
