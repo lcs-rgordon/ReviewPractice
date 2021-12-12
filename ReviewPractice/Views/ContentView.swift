@@ -27,6 +27,7 @@ struct GrowingButton: ButtonStyle {
 struct ContentView: View {
     
     //MARK: Stored properties
+    @State var currentQuestion = listOfChoiceChapterTwo.randomElement()!
     
     //MARK: Computed properties
     
@@ -34,13 +35,16 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             //question
-            Text("Question?")
+            Text("Q: \(currentQuestion.question)")
                 .font(.title2)
             //choice A
             Button(action: {
                 
             }, label: {
-                Text("A. ")
+                HStack {
+                    Text("A. ")
+                    Spacer()
+                }
             })
                 .buttonStyle(GrowingButton())
             
@@ -48,7 +52,10 @@ struct ContentView: View {
             Button(action: {
                 
             }, label: {
-                Text("B. ")
+                HStack {
+                    Text("B. ")
+                    Spacer()
+                }
             })
                 .buttonStyle(GrowingButton())
             
@@ -56,7 +63,10 @@ struct ContentView: View {
             Button(action: {
                 
             }, label: {
-                Text("C. ")
+                HStack {
+                    Text("C. ")
+                    Spacer()
+                }
             })
                 .buttonStyle(GrowingButton())
             
@@ -64,14 +74,31 @@ struct ContentView: View {
             Button(action: {
                 
             }, label: {
-                Text("D. ")
+                HStack {
+                    Text("D. ")
+                    Spacer()
+                }
             })
                 .buttonStyle(GrowingButton())
             
+            //next question
+            HStack {
+                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                        Text("Next")
+
+                })
+                    .buttonStyle(GrowingButton())
+            }
+            .padding(.top, 20)
+            
             Spacer()
+            
         }
         .navigationTitle("Multiple Choices")
-        .padding(20)
+        .padding(30)
     }
 }
 

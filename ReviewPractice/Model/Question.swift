@@ -14,12 +14,6 @@ struct ChoiceChapterTwo: Equatable {
     let choiceB: String
     let choiceC: String
     let choiceD: String
-    
-}
-
-//structure answer questions for chapter 2
-struct TypeChapterTwo {
-    let question: String
 }
 
 let listOfChoiceChapterTwo = [
@@ -29,7 +23,7 @@ let listOfChoiceChapterTwo = [
                      choiceC: "91",
                      choiceD: "88")
     ,
-    ChoiceChapterTwo(question: "In the term trace element, the adjective trace means that",
+    ChoiceChapterTwo(question: "In the term trace element, the adjective trace means that ...",
                      choiceA: "the element is required in very small amounts.",
                      choiceB: "the element enhances health but is not essential for the organism's long-term survival.",
                      choiceC: "the element can be used as a label to trace atoms through an organism's metabolism.",
