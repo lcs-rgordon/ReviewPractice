@@ -23,7 +23,7 @@ let listOfChoiceChapterTwo = [
                      choiceC: "91",
                      choiceD: "88")
     ,
-    ChoiceChapterTwo(question: "In the term trace element, the adjective trace means that ...",
+    ChoiceChapterTwo(question: "In the term trace element, the adjective trace means that _____.",
                      choiceA: "the element is required in very small amounts.",
                      choiceB: "the element enhances health but is not essential for the organism's long-term survival.",
                      choiceC: "the element can be used as a label to trace atoms through an organism's metabolism.",
@@ -41,7 +41,7 @@ let listOfChoiceChapterTwo = [
                      choiceC: "electrons circling the nucleus of an atom",
                      choiceD: "particles in the nucleus of an atom")
     ,
-    ChoiceChapterTwo(question: "The reactivity of an atom arises from",
+    ChoiceChapterTwo(question: "The reactivity of an atom arises from _____.",
                      choiceA: "the existence of unpaired electrons in the valence shell.",
                      choiceB: "the average distance of the outermost electron shell from the nucleus.",
                      choiceC: "the potential energy of the valence shell.",

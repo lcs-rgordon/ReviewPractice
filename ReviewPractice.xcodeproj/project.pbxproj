@@ -13,6 +13,7 @@
 		5A0569AE2764F1A700E651A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A0569AD2764F1A700E651A8 /* Preview Assets.xcassets */; };
 		5A0569B72764F2D200E651A8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0569B62764F2D200E651A8 /* Question.swift */; };
 		5A0569B92764F54300E651A8 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0569B82764F54300E651A8 /* LandingView.swift */; };
+		5A3EA79F2765CB1200CFA030 /* TestRandomChoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA79E2765CB1200CFA030 /* TestRandomChoicesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		5A0569AD2764F1A700E651A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A0569B62764F2D200E651A8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5A0569B82764F54300E651A8 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		5A3EA79E2765CB1200CFA030 /* TestRandomChoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRandomChoicesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				5A0569A82764F19E00E651A8 /* ContentView.swift */,
+				5A3EA79E2765CB1200CFA030 /* TestRandomChoicesView.swift */,
 				5A0569B82764F54300E651A8 /* LandingView.swift */,
 			);
 			path = Views;
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3EA79F2765CB1200CFA030 /* TestRandomChoicesView.swift in Sources */,
 				5A0569B92764F54300E651A8 /* LandingView.swift in Sources */,
 				5A0569B72764F2D200E651A8 /* Question.swift in Sources */,
 				5A0569A92764F19E00E651A8 /* ContentView.swift in Sources */,
