@@ -6,16 +6,6 @@
 //
 
 import SwiftUI
-extension Int {
-    static func random(in range: ClosedRange<Int>, excluding x: Int) -> Int {
-        if range.contains(x) {
-            let r = Int.random(in: Range(uncheckedBounds: (range.lowerBound, range.upperBound)))
-            return r == x ? range.upperBound : r
-        } else {
-            return Int.random(in: range)
-        }
-    }
-}
 
 struct TestRandomChoicesView: View {
     
@@ -25,24 +15,23 @@ struct TestRandomChoicesView: View {
     //check previous question
     @State var previousQuestion = listOfChoiceChapterTwo.randomElement()!
     
-    @State private var userChoice = ""
+    @State var isRightAnswer = false
+    
+    @State var showFeedback = false
     
 //    @State var regenerateNumber = false
 //    var randomNumber: Int {
 //        if regenerateNumber == true {
 //            return Int.random(in: 1...4)
 //        } else {
-//            return Int.random(in: 1...4)
+//            return 3
 //        }
 //    }
     @State var randomNumber = Int.random(in: 1...4)
     
     //MARK: Computed properties
-
-    @State var isRightAnswer = false
     
     //return feedback
-    @State var showFeedback = false
     
     var feedback: String {
         if showFeedback == true {
@@ -104,27 +93,6 @@ struct TestRandomChoicesView: View {
                 return "\(currentQuestion.choiceC)"
             }
         }
-    
-//    var choice = Int.random(in: 1...4)
-//    for _ in 1...4 {
-//        r = Int.random(in: 1...4, excluding: r)
-//        print(r, terminator: " ")
-//    }
-    
-//    var secondChoice: String {
-//        while choiceOne == choiceTwo {
-//            choiceTwo = Int.random(in: 1...4)
-//        }
-//        if choiceTwo == 1 {
-//            return "\(currentQuestion.choiceA)"
-//        } else if choiceTwo == 2 {
-//            return "\(currentQuestion.choiceB)"
-//        } else if choiceTwo == 3 {
-//            return "\(currentQuestion.choiceC)"
-//        } else {
-//            return "\(currentQuestion.choiceD)"
-//        }
-//    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
