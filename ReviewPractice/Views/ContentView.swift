@@ -29,7 +29,37 @@ struct ContentView: View {
     //MARK: Stored properties
     @State var currentQuestion = listOfChoiceChapterTwo.randomElement()!
     
+    //check previous question
+    @State var previousQuestion = listOfChoiceChapterTwo.randomElement()!
+    
+    //@State private var userChoice = ""
+    
+    let choiceOne = Int.random(in: 1..<4)
+
+    @State var firstChoice = ""
+    
     //MARK: Computed properties
+    //check user's choice
+//    var isRightAnswer: Bool {
+//        if userChoice == currentQuestion.choiceA {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+    @State var isRightAnswer = false
+    
+    //return feedback
+    var feedback: String {
+        switch isRightAnswer {
+            case true:
+                return "You got it right, congratulation!"
+            default:
+                return "This is not the right answer, try again!"
+        }
+    }
+    
+    //show and hide feedback
     
     
     var body: some View {
@@ -42,7 +72,8 @@ struct ContentView: View {
                 
             }, label: {
                 HStack {
-                    Text("A. ")
+                    
+                    //Text("A. \(currentQuestion.choiceA)")
                     Spacer()
                 }
             })
@@ -83,9 +114,15 @@ struct ContentView: View {
             
             //next question
             HStack {
+                Text(feedback)
                 Spacer()
                 Button(action: {
+                    previousQuestion = currentQuestion
                     
+                    while previousQuestion == currentQuestion {
+                        //get another question
+                        currentQuestion = listOfChoiceChapterTwo.randomElement()!
+                    }
                 }, label: {
                         Text("Next")
 
