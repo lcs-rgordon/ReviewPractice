@@ -82,11 +82,10 @@ struct ContentView: View {
                 .font(.title2)
             //choice A
             Button(action: {
-                showFeedback = true
-                withAnimation{
+                withAnimation {
+                    showFeedback = true
                     isRightAnswer = true
                 }
-                
             }, label: {
                 HStack {
                     
@@ -98,8 +97,8 @@ struct ContentView: View {
             
             //choice B
             Button(action: {
-                showFeedback = true
                 withAnimation {
+                    showFeedback = true
                     isRightAnswer = false
                 }
             }, label: {
@@ -112,8 +111,10 @@ struct ContentView: View {
             
             //choice C
             Button(action: {
-                showFeedback = true
-                isRightAnswer = false
+                withAnimation {
+                    showFeedback = true
+                    isRightAnswer = false
+                }
             }, label: {
                 HStack {
                     Text("C. \(currentQuestion.choiceC)")
@@ -124,8 +125,10 @@ struct ContentView: View {
             
             //choice D
             Button(action: {
-                showFeedback = true
-                isRightAnswer = false
+                withAnimation {
+                    showFeedback = true
+                    isRightAnswer = false
+                }
             }, label: {
                 HStack {
                     Text("D. \(currentQuestion.choiceD)")
@@ -152,6 +155,7 @@ struct ContentView: View {
                     
                 })
                     .buttonStyle(GrowingButton())
+                //show the next button only when the right answer is pressed
                     .opacity(isRightAnswer ? 1.0 : 0.0)
             }
             .padding(.top, 20)
