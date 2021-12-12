@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//button style
 struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -16,9 +17,9 @@ struct GrowingButton: ButtonStyle {
             .foregroundColor(.black)
             .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
             .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.purple, lineWidth: 2)
-                    )
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.purple, lineWidth: 2)
+            )
             .scaleEffect(configuration.isPressed ? 1.1 : 1)
             .animation(.easeOut(duration: 0.3), value: configuration.isPressed)
     }
@@ -35,31 +36,43 @@ struct ContentView: View {
     //@State private var userChoice = ""
     
     let choiceOne = Int.random(in: 1..<4)
-
-    @State var firstChoice = ""
+    
+    //@State var firstChoice = ""
     
     //MARK: Computed properties
     //check user's choice
-//    var isRightAnswer: Bool {
-//        if userChoice == currentQuestion.choiceA {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
+    //    var isRightAnswer: Bool {
+    //        if userChoice == currentQuestion.choiceA {
+    //            return true
+    //        } else {
+    //            return false
+    //        }
+    //    }
     @State var isRightAnswer = false
     
     //return feedback
+    @State var showFeedback = false
+    
     var feedback: String {
-        switch isRightAnswer {
+        if showFeedback == true {
+            switch isRightAnswer {
             case true:
                 return "You got it right, congratulation!"
             default:
                 return "This is not the right answer, try again!"
+            }
+        } else {
+            return ""
         }
     }
     
-    //show and hide feedback
+    //    var firstChoice: String {
+    //        if choiceOne == 1 {
+    //            firstChoice = "\(currentQuestion.choiceA)"
+    //        } else if choiceOne == 2 {
+    //            firstChoice = "\(currentQuestion.choiceB)"
+    //        }
+    //    }
     
     
     var body: some View {
@@ -69,11 +82,15 @@ struct ContentView: View {
                 .font(.title2)
             //choice A
             Button(action: {
+                showFeedback = true
+                withAnimation{
+                    isRightAnswer = true
+                }
                 
             }, label: {
                 HStack {
                     
-                    //Text("A. \(currentQuestion.choiceA)")
+                    Text("A. \(currentQuestion.choiceA)")
                     Spacer()
                 }
             })
@@ -81,10 +98,13 @@ struct ContentView: View {
             
             //choice B
             Button(action: {
-                
+                showFeedback = true
+                withAnimation {
+                    isRightAnswer = false
+                }
             }, label: {
                 HStack {
-                    Text("B. ")
+                    Text("B. \(currentQuestion.choiceB)")
                     Spacer()
                 }
             })
@@ -92,10 +112,11 @@ struct ContentView: View {
             
             //choice C
             Button(action: {
-                
+                showFeedback = true
+                isRightAnswer = false
             }, label: {
                 HStack {
-                    Text("C. ")
+                    Text("C. \(currentQuestion.choiceC)")
                     Spacer()
                 }
             })
@@ -103,10 +124,11 @@ struct ContentView: View {
             
             //choice D
             Button(action: {
-                
+                showFeedback = true
+                isRightAnswer = false
             }, label: {
                 HStack {
-                    Text("D. ")
+                    Text("D. \(currentQuestion.choiceD)")
                     Spacer()
                 }
             })
@@ -115,8 +137,10 @@ struct ContentView: View {
             //next question
             HStack {
                 Text(feedback)
+                    .multilineTextAlignment(.center)
                 Spacer()
                 Button(action: {
+                    showFeedback = false
                     previousQuestion = currentQuestion
                     
                     while previousQuestion == currentQuestion {
@@ -124,10 +148,11 @@ struct ContentView: View {
                         currentQuestion = listOfChoiceChapterTwo.randomElement()!
                     }
                 }, label: {
-                        Text("Next")
-
+                    Text("Next")
+                    
                 })
                     .buttonStyle(GrowingButton())
+                    .opacity(isRightAnswer ? 1.0 : 0.0)
             }
             .padding(.top, 20)
             
