@@ -9,15 +9,50 @@ import SwiftUI
 
 struct LandingView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             List {
-              Text("Chapter 2: The Chemical Context of Life")
-              Text("Chapter 3 : Water and the Fitness of the Environment")
-              Text("Chapter 4 : Carbon and the Molecular Diversity of Life")
-              Text("Chapter 5 : The Structure and Function of Large Biological Molecules")
-
+                //2
+                NavigationLink(destination: {
+                    
+                    ContentView()
+                    
+                }, label: {
+    
+                    Text("Chapter 2: The Chemical Context of Life")
+                })
+                    .listRowSeparatorTint(.purple)
+                //3
+                NavigationLink(destination: {
+                    
+                    ContentView()
+                    
+                }, label: {
+    
+                    Text("Chapter 3 : Water and the Fitness of the Environment")
+                })
+                    .listRowSeparatorTint(.purple)
+                //4
+                NavigationLink(destination: {
+                    
+                    ContentView()
+                    
+                }, label: {
+    
+                    Text("Chapter 4 : Carbon and the Molecular Diversity of Life")
+                })
+                    .listRowSeparatorTint(.purple)
+                //5
+                NavigationLink(destination: {
+                    
+                    ContentView()
+                    
+                }, label: {
+    
+                    Text("Chapter 5 : The Structure and Function of Large Biological Molecules")
+                })            .listRowSeparatorTint(.purple)
             }
-            .listStyle(.grouped)
+            .listStyle(.insetGrouped)
+            .listRowSeparatorTint(.purple)
         }
         .navigationTitle("Pre AP Bio Review")
     }
