@@ -17,8 +17,11 @@ struct LandingView: View {
                     ContentView()
                     
                 }, label: {
-    
-                    Text("Chapter 2: The Chemical Context of Life")
+                    HStack {
+                        Text("Chapter 2: ")
+                        Text("The Chemical Context of Life")
+                    }
+                    .padding(.vertical, 8)
                 })
                     .listRowSeparatorTint(.purple)
                 //3
@@ -27,8 +30,11 @@ struct LandingView: View {
                     ContentView()
                     
                 }, label: {
-    
-                    Text("Chapter 3 : Water and the Fitness of the Environment")
+                    HStack {
+                        Text("Chapter 3: ")
+                        Text("Water and the Fitness of the Environment")
+                    }
+                    .padding(.vertical, 8)
                 })
                     .listRowSeparatorTint(.purple)
                 //4
@@ -37,8 +43,12 @@ struct LandingView: View {
                     ContentView()
                     
                 }, label: {
-    
-                    Text("Chapter 4 : Carbon and the Molecular Diversity of Life")
+                    HStack {
+                        Text("Chapter 4 : ")
+                        Text("Carbon and the Molecular Diversity of Life")
+                            .truncationMode(.middle)
+                    }
+                    .padding(.vertical, 8)
                 })
                     .listRowSeparatorTint(.purple)
                 //5
@@ -47,9 +57,13 @@ struct LandingView: View {
                     ContentView()
                     
                 }, label: {
-    
-                    Text("Chapter 5 : The Structure and Function of Large Biological Molecules")
-                })            .listRowSeparatorTint(.purple)
+                    HStack {
+                        Text("Chapter 5 : ")
+                        Text("The Structure and Function of Large Biological Molecules")
+                    }
+                    .padding(.vertical, 8)
+                })
+                    .listRowSeparatorTint(.purple)
             }
             .listStyle(.insetGrouped)
             .listRowSeparatorTint(.purple)
