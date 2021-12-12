@@ -18,21 +18,12 @@ struct TestRandomChoicesView: View {
     @State var isRightAnswer = false
     
     @State var showFeedback = false
-    
-//    @State var regenerateNumber = false
-//    var randomNumber: Int {
-//        if regenerateNumber == true {
-//            return Int.random(in: 1...4)
-//        } else {
-//            return 3
-//        }
-//    }
+
     @State var randomNumber = Int.random(in: 1...4)
     
     //MARK: Computed properties
     
     //return feedback
-    
     var feedback: String {
         if showFeedback == true {
             switch isRightAnswer {
@@ -178,6 +169,8 @@ struct TestRandomChoicesView: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Button(action: {
+                    //regenerate randomNumber
+                    randomNumber = Int.random(in: 1...4)
                     showFeedback = false
                     previousQuestion = currentQuestion
                     
@@ -186,7 +179,6 @@ struct TestRandomChoicesView: View {
                         currentQuestion = listOfChoiceChapterTwo.randomElement()!
                     }
                     isRightAnswer = false
-                    //regenerateNumber = true
                 }, label: {
                     Text("Next")
                     
