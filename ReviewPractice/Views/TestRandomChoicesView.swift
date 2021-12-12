@@ -6,6 +6,16 @@
 //
 
 import SwiftUI
+extension Int {
+    static func random(in range: ClosedRange<Int>, excluding x: Int) -> Int {
+        if range.contains(x) {
+            let r = Int.random(in: Range(uncheckedBounds: (range.lowerBound, range.upperBound)))
+            return r == x ? range.upperBound : r
+        } else {
+            return Int.random(in: range)
+        }
+    }
+}
 
 struct TestRandomChoicesView: View {
     
@@ -15,21 +25,20 @@ struct TestRandomChoicesView: View {
     //check previous question
     @State var previousQuestion = listOfChoiceChapterTwo.randomElement()!
     
-    //@State private var userChoice = ""
+    @State private var userChoice = ""
     
-    let choiceOne = Int.random(in: 1..<4)
-    
-    //@State var firstChoice = ""
+//    @State var regenerateNumber = false
+//    var randomNumber: Int {
+//        if regenerateNumber == true {
+//            return Int.random(in: 1...4)
+//        } else {
+//            return Int.random(in: 1...4)
+//        }
+//    }
+    @State var randomNumber = Int.random(in: 1...4)
     
     //MARK: Computed properties
-    //check user's choice
-    //    var isRightAnswer: Bool {
-    //        if userChoice == currentQuestion.choiceA {
-    //            return true
-    //        } else {
-    //            return false
-    //        }
-    //    }
+
     @State var isRightAnswer = false
     
     //return feedback
@@ -48,14 +57,74 @@ struct TestRandomChoicesView: View {
         }
     }
     
-    //    var firstChoice: String {
-    //        if choiceOne == 1 {
-    //            firstChoice = "\(currentQuestion.choiceA)"
-    //        } else if choiceOne == 2 {
-    //            firstChoice = "\(currentQuestion.choiceB)"
-    //        }
-    //    }
+    var firstChoice: String {
+            if randomNumber == 1 {
+                return "\(currentQuestion.choiceA)"
+            } else if randomNumber == 2 {
+                return "\(currentQuestion.choiceB)"
+            } else if randomNumber == 3 {
+                return "\(currentQuestion.choiceC)"
+            } else {
+                return "\(currentQuestion.choiceD)"
+            }
+        }
     
+    var secondChoice: String {
+            if randomNumber == 1 {
+                return "\(currentQuestion.choiceB)"
+            } else if randomNumber == 2 {
+                return "\(currentQuestion.choiceC)"
+            } else if randomNumber == 3 {
+                return "\(currentQuestion.choiceD)"
+            } else {
+                return "\(currentQuestion.choiceA)"
+            }
+        }
+    
+    var thirdChoice: String {
+            if randomNumber == 1 {
+                return "\(currentQuestion.choiceC)"
+            } else if randomNumber == 2 {
+                return "\(currentQuestion.choiceD)"
+            } else if randomNumber == 3 {
+                return "\(currentQuestion.choiceA)"
+            } else {
+                return "\(currentQuestion.choiceB)"
+            }
+        }
+    
+    var fourthChoice: String {
+            if randomNumber == 1 {
+                return "\(currentQuestion.choiceD)"
+            } else if randomNumber == 2 {
+                return "\(currentQuestion.choiceA)"
+            } else if randomNumber == 3 {
+                return "\(currentQuestion.choiceB)"
+            } else {
+                return "\(currentQuestion.choiceC)"
+            }
+        }
+    
+//    var choice = Int.random(in: 1...4)
+//    for _ in 1...4 {
+//        r = Int.random(in: 1...4, excluding: r)
+//        print(r, terminator: " ")
+//    }
+    
+//    var secondChoice: String {
+//        while choiceOne == choiceTwo {
+//            choiceTwo = Int.random(in: 1...4)
+//        }
+//        if choiceTwo == 1 {
+//            return "\(currentQuestion.choiceA)"
+//        } else if choiceTwo == 2 {
+//            return "\(currentQuestion.choiceB)"
+//        } else if choiceTwo == 3 {
+//            return "\(currentQuestion.choiceC)"
+//        } else {
+//            return "\(currentQuestion.choiceD)"
+//        }
+//    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
@@ -66,12 +135,16 @@ struct TestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    isRightAnswer = true
+                    if firstChoice == "\(currentQuestion.choiceA)" {
+                        isRightAnswer = true
+                    } else {
+                        isRightAnswer = false
+                    }
                 }
             }, label: {
                 HStack {
                     
-                    Text("A. \(currentQuestion.choiceA)")
+                    Text("A. \(firstChoice)")
                     Spacer()
                 }
             })
@@ -81,11 +154,15 @@ struct TestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    isRightAnswer = false
+                    if secondChoice == currentQuestion.choiceA {
+                        isRightAnswer = true
+                    } else {
+                        isRightAnswer = false
+                    }
                 }
             }, label: {
                 HStack {
-                    Text("B. \(currentQuestion.choiceB)")
+                    Text("B. \(secondChoice)")
                     Spacer()
                 }
             })
@@ -95,11 +172,15 @@ struct TestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    isRightAnswer = false
+                    if thirdChoice == currentQuestion.choiceA {
+                        isRightAnswer = true
+                    } else {
+                        isRightAnswer = false
+                    }
                 }
             }, label: {
                 HStack {
-                    Text("C. \(currentQuestion.choiceC)")
+                    Text("C. \(thirdChoice)")
                     Spacer()
                 }
             })
@@ -109,11 +190,15 @@ struct TestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    isRightAnswer = false
+                    if fourthChoice == currentQuestion.choiceA {
+                        isRightAnswer = true
+                    } else {
+                        isRightAnswer = false
+                    }
                 }
             }, label: {
                 HStack {
-                    Text("D. \(currentQuestion.choiceD)")
+                    Text("D. \(fourthChoice)")
                     Spacer()
                 }
             })
@@ -132,6 +217,8 @@ struct TestRandomChoicesView: View {
                         //get another question
                         currentQuestion = listOfChoiceChapterTwo.randomElement()!
                     }
+                    isRightAnswer = false
+                    //regenerateNumber = true
                 }, label: {
                     Text("Next")
                     

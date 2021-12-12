@@ -150,6 +150,7 @@ struct ContentView: View {
                         //get another question
                         currentQuestion = listOfChoiceChapterTwo.randomElement()!
                     }
+                    isRightAnswer = false
                 }, label: {
                     Text("Next")
                     
