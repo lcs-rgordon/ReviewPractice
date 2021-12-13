@@ -11,7 +11,9 @@ import SwiftUI
 struct ReviewPracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            LandingView()
+            NavigationView {
+                LandingView()
+            }
         }
     }
 }

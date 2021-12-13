@@ -14,7 +14,7 @@ struct LandingView: View {
                 //2
                 NavigationLink(destination: {
                     
-                    ContentView()
+                    RevisedTestRandomChoicesView()
                     
                 }, label: {
                     HStack {
