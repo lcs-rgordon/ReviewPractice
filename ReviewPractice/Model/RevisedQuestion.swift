@@ -7,79 +7,87 @@
 
 import Foundation
 
-class RevisedQuestion: ObservableObject, Equatable {
+struct RevisedQuestion: Equatable {
     
     // MARK: Stored properties
     let question: String
-    let incorrectAnswers: [String]
     let correctAnswer: String
-    @Published var allAnswers: [String]
+    let incorrectAnswers: [String]
     
-    
-    // MARK: Initializer, this runs when the structure is first initialized (created)
-    init(question: String,
-         incorrectAnswers: [String],
-         correctAnswer: String)
-    {
-        self.question = question
-        self.incorrectAnswers = incorrectAnswers
-        self.correctAnswer = correctAnswer
-        
-        // Create empty array
-        var answers: [String] = []
-        
-        // Add all answers to the array
-        answers.append(correctAnswer)
-        answers.append(contentsOf: incorrectAnswers)
-        
-        // Set the answers
-        self.allAnswers = answers
-        
-        // Shuffle the answers
-        shuffleAnswers()
-
-    }
-    
-    // MARK: Functions
-    func shuffleAnswers() {
-        allAnswers.shuffle()
-    }
-
     // Required to conform with Equatable protocol
     static func == (lhs: RevisedQuestion, rhs: RevisedQuestion) -> Bool {
         
         // Two insances of RevisedQuestion are identical when the text of the question property is the same...
         return lhs.question == rhs.question
     }
-
     
 }
 
 let listOfRevisedQuestions = [
 
-    RevisedQuestion(question: listOfChoiceChapterTwo.first!.question,
+    RevisedQuestion(question: "How many naturally occurring elements are there?",
+                    correctAnswer: "92",
                     incorrectAnswers: [
                         
-                        listOfChoiceChapterTwo.first!.choiceB,
-                        listOfChoiceChapterTwo.first!.choiceC,
-                        listOfChoiceChapterTwo.first!.choiceD,
-
+                        "90",
+                        "91",
+                        "88"
                         
-                    ],
-                    correctAnswer: listOfChoiceChapterTwo.first!.choiceA)
-    
+                    ]
+                    )
+
     ,
     
-    RevisedQuestion(question: listOfChoiceChapterTwo.last!.question,
+    RevisedQuestion(question: "In the term trace element, the adjective trace means that _____.",
+                    correctAnswer: "the element is required in very small amounts.",
                     incorrectAnswers: [
                         
-                        listOfChoiceChapterTwo.last!.choiceB,
-                        listOfChoiceChapterTwo.last!.choiceC,
-                        listOfChoiceChapterTwo.last!.choiceD,
-
+                        "the element enhances health but is not essential for the organism's long-term survival.",
+                        "the element can be used as a label to trace atoms through an organism's metabolism.",
+                        "the element is very rare on Earth."
                         
-                    ],
-                    correctAnswer: listOfChoiceChapterTwo.last!.choiceA)
+                    ]
+                    )
+
+    ,
 
 
+    RevisedQuestion(question: "The type of bonding and the numbers of covalent bonds an atom can form with other atoms is determined by _____.",
+                    correctAnswer: "the number of unpaired electrons in the valence shell",
+                    incorrectAnswers: [
+                        
+                        "the size of the atom; smaller atoms are chemically more reactive",
+                        "the number of protons",
+                        "the nucleus"
+                        
+                    ]
+                    )
+
+    ,
+
+    RevisedQuestion(question: "Changing the number of _____ would change an atom into an atom of a different element.",
+                    correctAnswer: "protons in an atom",
+                    incorrectAnswers: [
+                        
+                        "bonds formed by an atom",
+                        "electrons circling the nucleus of an atom",
+                        "particles in the nucleus of an atom"
+                        
+                    ]
+                    )
+
+    ,
+
+    RevisedQuestion(question: "The reactivity of an atom arises from _____.",
+                    correctAnswer: "the existence of unpaired electrons in the valence shell.",
+                    incorrectAnswers: [
+                        
+                        "the average distance of the outermost electron shell from the nucleus.",
+                        "the potential energy of the valence shell.",
+                        "the sum of the potential energies of all the electron shells."
+                        
+                    ]
+                    )
+
+    ,
 ]

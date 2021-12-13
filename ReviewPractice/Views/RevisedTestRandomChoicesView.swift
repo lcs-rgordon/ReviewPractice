@@ -10,18 +10,25 @@ import SwiftUI
 struct RevisedTestRandomChoicesView: View {
     
     //MARK: Stored properties
+    
+    // Stores the currently selected question
     @State var currentQuestion = listOfRevisedQuestions.randomElement()!
     
-    //check previous question
+    // Stores the previously presented question
     @State var previousQuestion = listOfRevisedQuestions.randomElement()!
     
+    // Presents the currently selected question
+    // NOTE: The randomly selected question here will be overriden in the .task modifier.
+    @State var presentedQuestion = QuestionForPresentation(questionToPresent: listOfRevisedQuestions.randomElement()!)
+
+    // Whether the correct answer was selected
     @State var isRightAnswer = false
     
+    // Whether to show feedback on answer
     @State var showFeedback = false
 
     //MARK: Computed properties
-    
-    //return feedback
+    // Feedback on answer
     var feedback: String {
         if showFeedback == true {
             switch isRightAnswer {
@@ -44,7 +51,7 @@ struct RevisedTestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    if currentQuestion.allAnswers[0] == currentQuestion.correctAnswer {
+                    if presentedQuestion.possibleAnswers[0] == presentedQuestion.correctAnswer {
                         isRightAnswer = true
                     } else {
                         isRightAnswer = false
@@ -53,7 +60,7 @@ struct RevisedTestRandomChoicesView: View {
             }, label: {
                 HStack {
                     
-                    Text("A. \(currentQuestion.allAnswers[0])")
+                    Text("A. \(presentedQuestion.possibleAnswers[0])")
                     Spacer()
                 }
             })
@@ -63,7 +70,7 @@ struct RevisedTestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    if currentQuestion.allAnswers[1] == currentQuestion.correctAnswer {
+                    if presentedQuestion.possibleAnswers[1] == presentedQuestion.correctAnswer {
                         isRightAnswer = true
                     } else {
                         isRightAnswer = false
@@ -71,7 +78,7 @@ struct RevisedTestRandomChoicesView: View {
                 }
             }, label: {
                 HStack {
-                    Text("B. \(currentQuestion.allAnswers[1])")
+                    Text("B. \(presentedQuestion.possibleAnswers[1])")
                     Spacer()
                 }
             })
@@ -81,7 +88,7 @@ struct RevisedTestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    if currentQuestion.allAnswers[2] == currentQuestion.correctAnswer {
+                    if presentedQuestion.possibleAnswers[2] == presentedQuestion.correctAnswer {
                         isRightAnswer = true
                     } else {
                         isRightAnswer = false
@@ -89,7 +96,7 @@ struct RevisedTestRandomChoicesView: View {
                 }
             }, label: {
                 HStack {
-                    Text("C. \(currentQuestion.allAnswers[2])")
+                    Text("C. \(presentedQuestion.possibleAnswers[2])")
                     Spacer()
                 }
             })
@@ -99,7 +106,7 @@ struct RevisedTestRandomChoicesView: View {
             Button(action: {
                 withAnimation {
                     showFeedback = true
-                    if currentQuestion.allAnswers[3] == currentQuestion.correctAnswer {
+                    if presentedQuestion.possibleAnswers[3] == presentedQuestion.correctAnswer {
                         isRightAnswer = true
                     } else {
                         isRightAnswer = false
@@ -107,7 +114,7 @@ struct RevisedTestRandomChoicesView: View {
                 }
             }, label: {
                 HStack {
-                    Text("D. \(currentQuestion.allAnswers[3])")
+                    Text("D. \(presentedQuestion.possibleAnswers[3])")
                     Spacer()
                 }
             })
@@ -128,8 +135,8 @@ struct RevisedTestRandomChoicesView: View {
                         // Get another question
                         currentQuestion = listOfRevisedQuestions.randomElement()!
                         
-                        // Shuffle order of answers on the selected question
-                        currentQuestion.shuffleAnswers()
+                        // Present this question
+                        presentedQuestion = QuestionForPresentation(questionToPresent: currentQuestion)
                     }
                     isRightAnswer = false
                 }, label: {
@@ -144,6 +151,10 @@ struct RevisedTestRandomChoicesView: View {
             
             Spacer()
             
+        }
+        .task {
+            // When the page loads, present the selected question
+            presentedQuestion = QuestionForPresentation(questionToPresent: currentQuestion)
         }
         .navigationTitle("Multiple Choices")
         .padding(30)

@@ -16,6 +16,7 @@
 		5A3EA79F2765CB1200CFA030 /* TestRandomChoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA79E2765CB1200CFA030 /* TestRandomChoicesView.swift */; };
 		81D858A6276765A50093CE13 /* RevisedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D858A5276765A50093CE13 /* RevisedQuestion.swift */; };
 		81D858A8276767750093CE13 /* RevisedTestRandomChoicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D858A7276767750093CE13 /* RevisedTestRandomChoicesView.swift */; };
+		81D858AA2767A9880093CE13 /* QuestionForPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D858A92767A9880093CE13 /* QuestionForPresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5A3EA79E2765CB1200CFA030 /* TestRandomChoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRandomChoicesView.swift; sourceTree = "<group>"; };
 		81D858A5276765A50093CE13 /* RevisedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisedQuestion.swift; sourceTree = "<group>"; };
 		81D858A7276767750093CE13 /* RevisedTestRandomChoicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisedTestRandomChoicesView.swift; sourceTree = "<group>"; };
+		81D858A92767A9880093CE13 /* QuestionForPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionForPresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				5A0569B62764F2D200E651A8 /* Question.swift */,
 				81D858A5276765A50093CE13 /* RevisedQuestion.swift */,
+				81D858A92767A9880093CE13 /* QuestionForPresentation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				81D858A8276767750093CE13 /* RevisedTestRandomChoicesView.swift in Sources */,
 				5A3EA79F2765CB1200CFA030 /* TestRandomChoicesView.swift in Sources */,
 				5A0569B92764F54300E651A8 /* LandingView.swift in Sources */,
+				81D858AA2767A9880093CE13 /* QuestionForPresentation.swift in Sources */,
 				81D858A6276765A50093CE13 /* RevisedQuestion.swift in Sources */,
 				5A0569B72764F2D200E651A8 /* Question.swift in Sources */,
 				5A0569A92764F19E00E651A8 /* ContentView.swift in Sources */,
