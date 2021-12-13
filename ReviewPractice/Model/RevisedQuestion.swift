@@ -13,14 +13,7 @@ struct RevisedQuestion: Equatable {
     let question: String
     let correctAnswer: String
     let incorrectAnswers: [String]
-    
-    // Required to conform with Equatable protocol
-    static func == (lhs: RevisedQuestion, rhs: RevisedQuestion) -> Bool {
         
-        // Two insances of RevisedQuestion are identical when the text of the question property is the same...
-        return lhs.question == rhs.question
-    }
-    
 }
 
 let listOfRevisedQuestions = [
